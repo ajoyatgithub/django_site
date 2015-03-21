@@ -14,6 +14,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('p', 'Published'),

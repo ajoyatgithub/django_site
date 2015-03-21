@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=100)),
                 ('slug', models.CharField(max_length=100, blank=True)),
                 ('body', models.TextField()),
-                ('status', models.CharField(default=b'd', max_length=2)),
+                ('status', models.CharField(default=b'd', max_length=2, choices=[(b'p', b'Published'), (b'd', b'Draft'), (b'u', b'Unpublished')])),
                 ('created', models.DateTimeField(db_index=True, blank=True)),
                 ('modified', models.DateTimeField(blank=True)),
                 ('category', models.ForeignKey(blank=True, to='blog.Category', null=True)),

@@ -13,11 +13,14 @@ class PostAdmin(admin.ModelAdmin):
                        ('category', 'tags'))
         }),
     )
-    list_display = ['slug', 'created', 'modified']
+    list_display = ['title', 'created', 'modified', 'status']
+    list_filter  = ['category', 'status']
+    search_fields = ['title']
 
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
     exclude = ['slug', ]
+    list_display = ['name', 'parent']
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)

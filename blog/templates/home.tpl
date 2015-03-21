@@ -5,5 +5,7 @@
 {% endblock %}
 
 {% block content %}
-
+  {% for p in posts %}
+    {{ p.title }} {{ p.body|safe }}
+  {% endfor %}
 {% endblock %}

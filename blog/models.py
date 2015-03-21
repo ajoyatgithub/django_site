@@ -1,5 +1,4 @@
 from django.db import models
-from django_markdown.models import MarkdownField
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -26,7 +25,7 @@ class Post(models.Model):
     )
     title = models.CharField(max_length=100)
     slug  = models.CharField(max_length=100)
-    body  = MarkdownField()
+    body  = models.TextField()
     status  = models.CharField(max_length=2, default='d')
     created = models.DateTimeField(db_index=True)
     modified= models.DateTimeField()

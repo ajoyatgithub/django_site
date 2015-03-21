@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=100, db_index=True)),
-                ('slug', models.CharField(max_length=100, db_index=True)),
+                ('slug', models.CharField(db_index=True, max_length=100, blank=True)),
                 ('parent', models.ForeignKey(blank=True, to='blog.Category', null=True)),
             ],
             options={

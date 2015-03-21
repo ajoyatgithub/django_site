@@ -12,11 +12,15 @@ class Tag(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
-    slug = models.CharField(max_length=100, db_index=True)
+    slug = models.CharField(max_length=100, db_index=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True)
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Post, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = 'Categories'

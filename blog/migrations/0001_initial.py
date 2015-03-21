@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('parent', models.ForeignKey(blank=True, to='blog.Category', null=True)),
             ],
             options={
+                'verbose_name_plural': 'Categories',
             },
             bases=(models.Model,),
         ),
@@ -27,12 +28,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=100)),
-                ('slug', models.CharField(max_length=100)),
+                ('slug', models.CharField(max_length=100, blank=True)),
                 ('body', models.TextField()),
                 ('status', models.CharField(default=b'd', max_length=2)),
-                ('created', models.DateTimeField(db_index=True)),
-                ('modified', models.DateTimeField()),
-                ('category', models.ForeignKey(to='blog.Category')),
+                ('created', models.DateTimeField(db_index=True, blank=True)),
+                ('modified', models.DateTimeField(blank=True)),
+                ('category', models.ForeignKey(blank=True, to='blog.Category', null=True)),
             ],
             options={
             },

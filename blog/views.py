@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-def home():
-    pass
+from blog.models import Category, Post, Tag
+
+def home(request):
+    return render(request, 'home.tpl')

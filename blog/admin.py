@@ -4,18 +4,28 @@ from blog.models import Category, Post, Tag
 
 class PostAdmin(admin.ModelAdmin):
     model = Post
-    readonly_fields = ['preview', ]
+    readonly_fields = ['preview', 'modified', 'slug']
     fieldsets = (
         (None, {
             'fields': (('title', 'status'),
                        ('body', ),
-                       ( 'preview', ),
                        ('category', 'tags'))
         }),
+        (None, {
+            'classes': ('wide', ),
+            'fields': (( 'preview', ),)
+        }),
+        ('Edit creation date', {
+            'classes': ('collapse', ),
+            'fields': (('created', 'modified', 'slug'), )
+        })
     )
     list_display = ['title', 'created', 'modified', 'status']
+    list_editable = ['status', ]
     list_filter  = ['category', 'status']
     search_fields = ['title']
+    list_per_page = 50
+    save_on_top = True
 
 class CategoryAdmin(admin.ModelAdmin):
     model = Category

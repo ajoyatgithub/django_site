@@ -53,3 +53,4 @@ class Post(models.Model):
 
     def preview(self):
         return markdown.markdown(self.body)
+    preview.allow_tags = True

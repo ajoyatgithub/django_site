@@ -22,6 +22,36 @@ class Category(models.Model):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
 
+    def children(self):
+        return Category.objects.filter(parent=self)
+
+    def descendants(self):
+        children = self.children().values('id', 'name', 'slug')
+        if children:
+            for c in children:
+                childs_descendants = Category.objects.get(id=c['id']).descendants()
+                if childs_descendants:
+                    c['children'] = childs_descendants
+                else:
+                    c['children'] = None
+            return c
+        else:
+            return None
+
+    @classmethod
+    def tree(cls):
+        roots = cls.objects.filter(parent=None)
+        res = []
+        for r in roots:
+            res.append({
+                'id': r.id,
+                'name': r.name,
+                'slug': r.slug,
+                'children': r.descendants()
+            })
+        return res
+
+
     class Meta:
         verbose_name_plural = 'Categories'
 

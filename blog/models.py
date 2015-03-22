@@ -13,7 +13,8 @@ class Tag(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.CharField(max_length=100, db_index=True, blank=True)
-    parent = models.ForeignKey('self', null=True, blank=True)
+    parent = models.ForeignKey('self', null=True, blank=True,
+                               limit_choices_to={'parent':None})
 
     def __unicode__(self):
         return self.name
@@ -47,7 +48,7 @@ class Category(models.Model):
                 'id': r.id,
                 'name': r.name,
                 'slug': r.slug,
-                'children': r.descendants()
+                'children': r.children().values('id', 'name', 'slug')
             })
         return res
 

@@ -17,7 +17,10 @@ class Category(models.Model):
                                limit_choices_to={'parent':None})
 
     def __unicode__(self):
-        return self.name
+        if self.parent:
+            return "%s (%s)" % (self.name, self.parent)
+        else:
+            return "%s" % self.name
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -69,7 +72,8 @@ class Post(models.Model):
     created = models.DateTimeField(db_index=True, blank=True)
     modified= models.DateTimeField(blank=True)
     tags    = models.ManyToManyField(Tag, null=True, blank=True)
-    category= models.ForeignKey(Category, null=True, blank=True)
+    category= models.ForeignKey(Category, null=True, blank=True,
+                                limit_choices_to={'category__parent':None})
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

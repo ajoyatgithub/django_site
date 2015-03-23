@@ -1,4 +1,5 @@
 import markdown
+import itertools
 from datetime import datetime
 
 from django.utils.text import slugify
@@ -89,3 +90,27 @@ class Post(models.Model):
     def preview(self):
         return markdown.markdown(self.body)
     preview.allow_tags = True
+
+    @classmethod
+    def archive_tree(cls):
+        dates = Post.objects.filter(status='p').values('created')
+        date_list = [d['created'].date() for d in dates]
+
+        tree = []
+        # Group by year
+        tree = [{
+            'year' : year,
+            'months': [{
+                'month': g.strftime('%B'),
+                'day': g.day
+            } for g in group]
+        } for year, group in itertools.groupby(date_list, key=lambda x: x.year)]
+
+        # Group by month
+        for y in tree:
+            y['months'] = [{
+                'month': month,
+                'days' : [d['day'] for d in group]
+            } for month, group in itertools.groupby(y['months'], key=lambda x: x['month'])]
+
+        return tree

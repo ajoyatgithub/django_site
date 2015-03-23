@@ -1,11 +1,8 @@
-<h4>Categories</h4>
-<div class="well">
-  {% for c in categories %}
-    <h5>{{ c.name }}</h5>
-    <ul>
-      {% for s in c.children %}
-	<li>{{ s.name }}</li>
-      {% endfor %}
-    </ul>
-  {% endfor %}
-</div>
+<p><strong>Browse categories</strong></p>
+{% for c in categories %}
+  <p>{{ c.name }}<br/>
+    {% for s in c.children %}
+      <small>&raquo; {{ s.name }}</small><br />
+    {% endfor %}
+  </p>
+{% endfor %}

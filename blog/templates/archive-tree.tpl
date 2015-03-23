@@ -1,11 +1,8 @@
-<h4>Archives</h4>
-<div class="well">
-  {% for y in archives %}
-    <h5>{{ y.year }}</h5>
-    <ul>
-      {% for m in y.months %}
-	<li>{{ m.month }} {{ m.day }}</li>
-      {% endfor %}
-    </ul>
-  {% endfor %}
-</div>
+<p><strong>Browse archives</strong></p>
+{% for y in archives %}
+  <p>{{ y.year }}<br/>
+    {% for m in y.months %}
+      <small>&raquo; {{ m.month }}</small><br/>
+    {% endfor %}
+  </p>
+{% endfor %}

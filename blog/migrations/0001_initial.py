@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('parent', models.ForeignKey(blank=True, to='blog.Category', null=True)),
             ],
             options={
+                'ordering': ['parent__name', 'name'],
                 'verbose_name_plural': 'Categories',
             },
             bases=(models.Model,),
@@ -36,6 +37,7 @@ class Migration(migrations.Migration):
                 ('category', models.ForeignKey(blank=True, to='blog.Category', null=True)),
             ],
             options={
+                'ordering': ['-created'],
             },
             bases=(models.Model,),
         ),
@@ -46,6 +48,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=50)),
             ],
             options={
+                'ordering': ['name'],
             },
             bases=(models.Model,),
         ),

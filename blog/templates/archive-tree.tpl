@@ -4,10 +4,7 @@
     <h5>{{ y.year }}</h5>
     <ul>
       {% for m in y.months %}
-	<li>{{ m.month }}</li>
-	{% for d in m.days %}
-	  {{d}}
-	{% endfor %}
+	<li>{{ m.month }} {{ m.day }}</li>
       {% endfor %}
     </ul>
   {% endfor %}

@@ -8,6 +8,9 @@ from django.db import models
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ['name']
+
     def __unicode__(self):
         return self.name
 
@@ -59,6 +62,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
+        ordering = ['parent__name', 'name']
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -75,6 +79,9 @@ class Post(models.Model):
     tags    = models.ManyToManyField(Tag, null=True, blank=True)
     category= models.ForeignKey(Category, null=True, blank=True,
                                 limit_choices_to={'category__parent':None})
+
+    class Meta:
+        ordering = ['-created']
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -101,16 +108,16 @@ class Post(models.Model):
         tree = [{
             'year' : year,
             'months': [{
-                'month': g.strftime('%B'),
-                'day': g.day
+                'month': g.strftime('%B')
             } for g in group]
         } for year, group in itertools.groupby(date_list, key=lambda x: x.year)]
 
         # Group by month
         for y in tree:
             y['months'] = [{
-                'month': month,
-                'days' : [d['day'] for d in group]
-            } for month, group in itertools.groupby(y['months'], key=lambda x: x['month'])]
-
+                'month': month
+            } for month, group in itertools.groupby(
+                y['months'],
+                key=lambda x: x['month']
+            )]
         return tree

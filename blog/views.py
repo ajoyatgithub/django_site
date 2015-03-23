@@ -9,7 +9,7 @@ def common():
     }
 
 def home(request):
-    posts = Post.objects.filter(status='p').order_by('-created')[0:10]
+    posts = Post.objects.filter(status='p')[0:10]
     archives = Post.archive_tree()
     data = common()
     data['posts'] = posts
@@ -17,7 +17,7 @@ def home(request):
 
 def category(request, slug):
     category = Category.objects.get(slug=slug)
-    posts = category.post_set.filter(status='p').order_by('-created')
+    posts = category.post_set.filter(status='p')
     data = common()
     data['posts'] = posts
     return render(request, 'home.tpl', data)

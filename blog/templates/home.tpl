@@ -20,6 +20,7 @@
 
       <div class="col-md-3 col-xs-12">
 	{% include 'category-tree.tpl' %}
+	{% include 'archive-tree.tpl' %}
       </div>
     </div>
 

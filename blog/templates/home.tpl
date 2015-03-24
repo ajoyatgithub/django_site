@@ -5,6 +5,6 @@
 {% endblock %}
 
 {% block caption %}
-  <h2>Blog posts</h2>
-  <hr />
+  <h3>Blog posts</h3>
+  <br />
 {% endblock %}

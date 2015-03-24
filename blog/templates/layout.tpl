@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Blog| Ajoy Oommen
+  Ajoy's blog
 {% endblock %}
 
 {% block content %}
   <div class="container">
     <div class="row">
+      <div class="col-md-3 col-xs-6">
+	<br />
+	<strong>Ajoy Oommen</strong>
+	<br />
+	&raquo; <a href="http://ajoyoommen.com">Home</a>
+	&raquo; <a href="{% url 'blog.views.home' %}">Recent blogs</a>
+      </div>
+    </div>
 
+    <div class="row">
+      <hr />
     </div>
 
     <div class="row">
       <div class="col-md-3 col-xs-12">
-	<br />
-	<br />
 	{% include 'category-tree.tpl' %}
 	{% include 'archive-tree.tpl' %}
       </div>
@@ -27,7 +35,5 @@
 	{% endblock %}
       </div>
     </div>
-    <hr/>
-    <p class="text-center"><a href="http://ajoyoommen.com">Home</a></p>
   </div>
 {% endblock %}

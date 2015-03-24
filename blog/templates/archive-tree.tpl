@@ -2,7 +2,13 @@
 {% for y in archives %}
   <p>{{ y.year }}<br/>
     {% for m in y.months %}
-      <small>&raquo; {{ m.month }}</small><br/>
+      <small>
+	&raquo;
+	<a href="{% url 'blog.views.archive' y.year m.month  %}">
+	  {{ m.name }}
+	</a>
+      </small>
+      <br/>
     {% endfor %}
   </p>
 {% endfor %}

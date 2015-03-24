@@ -2,7 +2,7 @@
 {% for c in categories %}
   <p>{{ c.name }}<br/>
     {% for s in c.children %}
-      <small>&raquo; {{ s.name }}</small><br />
+      <small>&raquo; <a href="{% url 'blog.views.category' s.slug %}">{{ s.name }}</a></small><br />
     {% endfor %}
   </p>
 {% endfor %}

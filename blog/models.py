@@ -108,14 +108,16 @@ class Post(models.Model):
         tree = [{
             'year' : year,
             'months': [{
-                'month': g.strftime('%B')
+                'month': g.month,
+                'name' : g.strftime('%B')
             } for g in group]
         } for year, group in itertools.groupby(date_list, key=lambda x: x.year)]
 
         # Group by month
         for y in tree:
             y['months'] = [{
-                'month': month
+                'month': month,
+                'name' : [g['name'] for g in group][0]
             } for month, group in itertools.groupby(
                 y['months'],
                 key=lambda x: x['month']

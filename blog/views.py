@@ -22,14 +22,12 @@ def category(request, slug):
     data['posts'] = posts
     return render(request, 'home.tpl', data)
 
-def archive(request, year, month=None, day=None):
+def archive(request, year, month=None):
     posts = Post.objects.filter(status='p')
     if year:
         posts = posts.filter(created__year=year)
     if month:
         posts = posts.filter(created__month=month)
-    if day:
-        posts = posts.filter(created__day=day)
     data = common()
     data['posts'] = posts
     return render(request, 'home.tpl', data)

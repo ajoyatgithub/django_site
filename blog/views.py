@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 
 from blog.models import Category, Post, Tag
@@ -20,9 +22,10 @@ def category(request, slug):
     posts = category.post_set.filter(status='p')
     data = common()
     data['posts'] = posts
-    return render(request, 'home.tpl', data)
+    data['category'] = category
+    return render(request, 'category.tpl', data)
 
-def archive(request, year, month=None):
+def archive(request, year, month):
     posts = Post.objects.filter(status='p')
     if year:
         posts = posts.filter(created__year=year)
@@ -30,10 +33,13 @@ def archive(request, year, month=None):
         posts = posts.filter(created__month=month)
     data = common()
     data['posts'] = posts
-    return render(request, 'home.tpl', data)
+    date_str = "%s,%s" % (month, year)
+    date = datetime.strptime(date_str, "%m,%Y")
+    data['date'] = date.strftime("%B %Y")
+    return render(request, 'archive.tpl', data)
 
 def post(request, pid, slug):
     post = Post.objects.get(id=pid)
     data = common()
     data['post'] = post
-    return render(request, 'home.tpl', data)
+    return render(request, 'post.tpl', data)

@@ -1,10 +1,10 @@
 {% extends 'layout.tpl' %}
 
 {% block title %}
-  Blog| Ajoy Oommen
+  Posts in {{ date }}
 {% endblock %}
 
 {% block caption %}
-  <h2>Blog posts</h2>
-  <hr />
+  <h2>Posts in {{ date }}</h2>
+  <hr/>
 {% endblock %}

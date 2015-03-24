@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'layout.tpl' %}
 
 {% block title %}
-  Posts under Categories
+  Posts under {{ category.name }}
 {% endblock %}
 
-{% block content %}
-
+{% block caption %}
+  <h2>Posts under {{ category.name }}</h2>
+  <hr/>
 {% endblock %}

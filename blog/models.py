@@ -98,6 +98,9 @@ class Post(models.Model):
         return markdown.markdown(self.body)
     preview.allow_tags = True
 
+    def tagged(self):
+        return ", ".join([t['name'] for t in self.tags.values()])
+
     @classmethod
     def archive_tree(cls):
         dates = Post.objects.filter(status='p').values('created')

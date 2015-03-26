@@ -101,6 +101,10 @@ class Post(models.Model):
     def tagged(self):
         return ", ".join([t['name'] for t in self.tags.values()])
 
+    def related(self):
+        tags = self.tags.all()
+        return Post.objects.filter(tags__in=tags).exclude(id=self.id).distinct()
+
     @classmethod
     def archive_tree(cls):
         dates = Post.objects.filter(status='p').values('created')

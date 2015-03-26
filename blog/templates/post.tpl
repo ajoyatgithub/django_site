@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block main %}
-  <br/>
   <h3>{{ post.title }}<br /><small>{{ post.created|date:'F j, Y' }}</small></h3>
-  {{ post.preview|safe}}
   <hr />
-  <em>
+  {{ post.preview|safe}}
+  <p class="Lead">
     Posted in
     <a href="{% url 'blog.views.category' post.category.slug %}">
       {{ post.category.name }}
     </a>
-  </em>
+  </p>
+  {% include 'blog-list.tpl' %}
+  <hr />
 {% endblock %}

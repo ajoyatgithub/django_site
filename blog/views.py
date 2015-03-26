@@ -42,4 +42,6 @@ def post(request, pid, slug):
     post = Post.objects.get(id=pid)
     data = common()
     data['post'] = post
+    related = post.related()
+    data['posts'] = related
     return render(request, 'post.tpl', data)

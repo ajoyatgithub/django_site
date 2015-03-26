@@ -20,11 +20,11 @@ SITE_ROOT = os.path.realpath(os.path.dirname('..'))
 SECRET_KEY = '9-9doo*byuf5ya2n+#v1#z*7+9k)qz)5x681cdipms_@ps4spg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,3 +88,5 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.environ['STATIC_ROOT']

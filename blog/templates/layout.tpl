@@ -5,13 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
+  <div class="container blog">
     <div class="row">
-      <div class="col-md-3 col-xs-6">
+      <div class="">
 	<br />
-	<strong>Ajoy Oommen</strong>
-	<br />
-	&raquo; <a href="http://ajoyoommen.com">Home</a>
+	<a class="button" href="http://ajoyoommen.com">ajoyoommen.com</a>
 	&raquo; <a href="{% url 'blog.views.home' %}">Recent blogs</a>
       </div>
     </div>
@@ -21,12 +19,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-3 col-xs-12">
-	{% include 'category-tree.tpl' %}
-	{% include 'archive-tree.tpl' %}
-      </div>
-
-      <div class="col-md-9 col-xs-12">
+      <div class="offset-by-two eight columns">
 	{% block main %}
 	  {% block caption %}
 	  {% endblock %}

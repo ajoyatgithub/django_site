@@ -1,0 +1,19 @@
+.blog {
+  line-height: 1.2;
+}
+
+.blog a{
+  color: #2B6CC2;
+}
+
+.blog p {
+  margin-bottom: 1rem;
+}
+
+.blog .date{
+  font-family: 'Courier New', Monaco, monospace;
+}
+
+.blog hr{
+  border-color: #aaa;
+}

@@ -5,15 +5,19 @@
 {% endblock %}
 
 {% block main %}
-  <h3>{{ post.title }}<br /><small>{{ post.created|date:'F j, Y' }}</small></h3>
-  <hr />
-  {{ post.preview|safe}}
-  <p class="Lead">
-    Posted in
-    <a href="{% url 'blog.views.category' post.category.slug %}">
-      {{ post.category.name }}
-    </a>
+  <h1>{{ post.title }}</h1>
+  <p>
+    <em>On {{ post.created|date:'F j, Y' }}<br />
+      Posted in
+      <a href="{% url 'blog.views.category' post.category.slug %}">
+	{{ post.category.name }}
+      </a>
+    </em>
   </p>
-  {% include 'blog-list.tpl' %}
+  {{ post.preview|safe}}
+  {% if posts %}
+    <p><u>Related Posts</u></p>
+    {% include 'blog-list.tpl' %}
+  {% endif %}
   <hr />
 {% endblock %}

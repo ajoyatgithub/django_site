@@ -20,9 +20,9 @@ SITE_ROOT = os.path.realpath(os.path.dirname('..'))
 SECRET_KEY = '9-9doo*byuf5ya2n+#v1#z*7+9k)qz)5x681cdipms_@ps4spg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

@@ -1,0 +1,67 @@
+.blog {
+  color: #444;
+}
+
+.blog header {
+  padding-top: 1rem;
+  border-bottom: 1px solid #666;
+  margin-bottom: 3rem;
+}
+
+.blog header h1 {
+  font-size: 3.0rem;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 0rem;
+}
+
+@media (min-width: 550px) {
+  .blog header h1{
+    font-size: 3.6rem;
+  }
+}
+
+.blog header a, .blog header h1, .blog header h6 {
+  color: #666;
+  text-decoration: none;
+}
+
+.blog header a:hover {
+  color: #444;
+}
+
+.blog a {
+  color: #00A;
+  text-decoration: underline;
+}
+
+.blog a:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+.blog .post-date {
+  font-family: Monaco, 'Courier New', monospace;
+  font-size: 70%;
+  color: #999;
+}
+
+.blog .post-meta{
+  color: #222;
+}
+
+.blog hr {
+  border-color: #444;
+}
+
+.blog .text-center {
+  text-align: center;
+}
+
+.blog .related {
+  border-top: 1px dashed #CCC;
+  padding: 1rem;
+}
+
+.blog .post-list {
+  font-size: 120%;
+}

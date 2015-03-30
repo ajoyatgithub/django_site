@@ -5,6 +5,6 @@
 {% endblock %}
 
 {% block caption %}
-  <h3>Posts in {{ date }}</h3>
+  <strong>Posts in {{ date }}</strong>
   <br/>
 {% endblock %}

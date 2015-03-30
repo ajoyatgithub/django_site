@@ -1,32 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Ajoy's blog
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-xs-6">
-	<br />
-	<strong>Ajoy Oommen</strong>
-	<br />
-	&raquo; <a href="http://ajoyoommen.com">Home</a>
-	&raquo; <a href="{% url 'blog.views.home' %}">Recent blogs</a>
+  <div class="container blog">
+    <header>
+      <div class="row">
+	<div class="text-center">
+	  <h1><a href="{% url 'blog.views.home' %}">A WEBLOG</a></h1>
+	  <h6>
+	    on topics relating to Computer Science and Programming
+	  </h6>
+	</div>
       </div>
-    </div>
+    </header>
 
     <div class="row">
-      <hr />
-    </div>
-
-    <div class="row">
-      <div class="col-md-3 col-xs-12">
-	{% include 'category-tree.tpl' %}
-	{% include 'archive-tree.tpl' %}
-      </div>
-
-      <div class="col-md-9 col-xs-12">
+      <div class="offset-by-two eight columns">
 	{% block main %}
 	  {% block caption %}
 	  {% endblock %}

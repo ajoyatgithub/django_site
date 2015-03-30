@@ -25,17 +25,17 @@ def category(request, slug):
     data['category'] = category
     return render(request, 'category.tpl', data)
 
-def archive(request, year, month):
+def archive(request, year, month=None):
     posts = Post.objects.filter(status='p')
+    data = common()
     if year:
+        data['date'] = datetime.strptime("%s" % year, "%Y").strftime("%Y")
         posts = posts.filter(created__year=year)
     if month:
+        date_str = "%s,%s" % (month, year)
+        data['date'] = datetime.strptime(date_str, "%m,%Y").strftime("%B %Y")
         posts = posts.filter(created__month=month)
-    data = common()
     data['posts'] = posts
-    date_str = "%s,%s" % (month, year)
-    date = datetime.strptime(date_str, "%m,%Y")
-    data['date'] = date.strftime("%B %Y")
     return render(request, 'archive.tpl', data)
 
 def post(request, pid, slug):

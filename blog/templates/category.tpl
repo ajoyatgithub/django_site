@@ -5,6 +5,6 @@
 {% endblock %}
 
 {% block caption %}
-  <h1>Posts under {{ category.name }}</h1>
+  <strong>Posts under Category: {{ category.name }}</strong>
   <br/>
 {% endblock %}

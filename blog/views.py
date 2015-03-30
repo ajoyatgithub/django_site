@@ -11,7 +11,7 @@ def common():
     }
 
 def home(request):
-    posts = Post.objects.filter(status='p')[0:10]
+    posts = Post.objects.filter(status='p')[0:30]
     archives = Post.archive_tree()
     data = common()
     data['posts'] = posts

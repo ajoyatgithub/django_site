@@ -5,6 +5,7 @@ from blog.models import Category, Post, Tag
 class PostAdmin(admin.ModelAdmin):
     model = Post
     readonly_fields = ['preview', 'modified', 'slug', 'tagged']
+    filter_horizontal = ['tags', ]
     fieldsets = (
         (None, {
             'fields': (('title', 'status'),
@@ -13,8 +14,7 @@ class PostAdmin(admin.ModelAdmin):
         }),
         (None, {
             'classes': ('wide', ),
-            'fields': (( 'tagged', ),
-                       ( 'preview', ),)
+            'fields': (( 'preview', ),)
         }),
         ('Edit creation date', {
             'classes': ('collapse', ),

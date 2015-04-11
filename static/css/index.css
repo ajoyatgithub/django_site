@@ -73,3 +73,8 @@
 .blog .indent-block {
   margin: 0 0 0 1rem;
 }
+
+.blog blockquote {
+  padding-left: 1rem;
+  border-left: 0.5rem solid #ccc;
+}

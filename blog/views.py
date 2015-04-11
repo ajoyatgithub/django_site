@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from django.shortcuts import render, redirect
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render, redirect
 
 from blog.models import Category, Post, Tag
 
@@ -12,7 +13,7 @@ def home(request):
     return render(request, 'home.tpl', data)
 
 def category(request, slug):
-    category = Category.objects.get(slug=slug)
+    category = get_object_or_404(Category, slug=slug)
     posts = category.post_set.filter(status='p')
     data = {
         'categories': Category.tree(),
@@ -28,17 +29,26 @@ def archive(request, year, month=None):
         'archives': Post.archive_tree()
     }
     if year:
-        data['date'] = datetime.strptime("%s" % year, "%Y").strftime("%Y")
+        try:
+            data['date'] = datetime.strptime("%s" % year, "%Y").strftime("%Y")
+        except ValueError:
+            raise Http404('Invalid year')
         posts = posts.filter(created__year=year)
     if month:
         date_str = "%s,%s" % (month, year)
-        data['date'] = datetime.strptime(date_str, "%m,%Y").strftime("%B %Y")
+        try:
+            data['date'] = datetime.strptime(date_str, "%m,%Y").strftime("%B %Y")
+        except ValueError:
+            raise Http404('Invalid year or month')
         posts = posts.filter(created__month=month)
     data['posts'] = posts
     return render(request, 'archive.tpl', data)
 
 def post(request, pid, slug):
-    post = Post.objects.get(id=pid)
+    post = get_object_or_404(Post, id=pid)
+    if post.slug!=slug:
+        return redirect('blog.views.post', pid=pid, slug=post.slug,
+                        permanent=True)
     data = {}
     data['post'] = post
     related = post.related()

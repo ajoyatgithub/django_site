@@ -1,14 +1,11 @@
-<p><strong>Browse archives</strong></p>
+<strong>Archives</strong><br />
 {% for y in archives %}
-  <p>{{ y.year }}<br/>
-    {% for m in y.months %}
-      <small>
-	&raquo;
-	<a href="{% url 'blog.views.archive' y.year m.month  %}">
-	  {{ m.name }}
-	</a>
-      </small>
-      <br/>
-    {% endfor %}
-  </p>
+  &#8226; {{ y.year }}<br/>
+  {% for m in y.months %}
+    <p class="indent-block">
+      <a href="{% url 'blog.views.archive' y.year m.month  %}">
+	{{ m.name }}
+      </a>
+    </p>
+  {% endfor %}
 {% endfor %}

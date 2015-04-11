@@ -18,7 +18,9 @@
     </a>
     </span>
   </p>
-  {{ post.preview|safe}}
+  <div class="text-justify">
+    {{ post.preview|safe}}
+  </div>
   {% if posts %}
     <div class="related">
       <strong>Related Posts</strong>

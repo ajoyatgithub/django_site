@@ -4,7 +4,13 @@
   Posts in {{ date }}
 {% endblock %}
 
-{% block caption %}
-  <strong>Posts in {{ date }}</strong>
-  <br/>
+{% block main %}
+  <div class="four columns">
+    {% include 'archive-tree.tpl' %}
+  </div>
+  <div class="eight columns">
+    <strong>Posts in {{ date }}</strong>
+    <br/>
+    {% include 'blog-list.tpl' %}
+  </div>
 {% endblock %}

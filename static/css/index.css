@@ -30,7 +30,7 @@
 }
 
 .blog a {
-  color: #00A;
+  color: #05A;
   text-decoration: underline;
 }
 
@@ -57,6 +57,10 @@
   text-align: center;
 }
 
+.blog .text-justify {
+  text-align: justify;
+}
+
 .blog .related {
   border-top: 1px dashed #CCC;
   padding: 1rem;
@@ -64,4 +68,8 @@
 
 .blog .post-list {
   font-size: 120%;
+}
+
+.blog .indent-block {
+  margin: 0 0 0 1rem;
 }

@@ -5,14 +5,9 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from blog.models import Category, Post, Tag
 
-def common():
-    return {
-        'archives': Post.archive_tree(),
-        'categories': Category.tree()
-    }
-
 def home(request):
     posts = Post.objects.filter(status='p')[0:30]
+    archives = Post.archive_tree()
     data = {}
     data['posts'] = posts
     return render(request, 'home.tpl', data)
@@ -20,14 +15,19 @@ def home(request):
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = category.post_set.filter(status='p')
-    data = {}
+    data = {
+        'categories': Category.tree(),
+        'posts': posts,
+        'category': category
+    }
     data['posts'] = posts
-    data['category'] = category
     return render(request, 'category.tpl', data)
 
 def archive(request, year, month=None):
     posts = Post.objects.filter(status='p')
-    data = {}
+    data = {
+        'archives': Post.archive_tree()
+    }
     if year:
         try:
             data['date'] = datetime.strptime("%s" % year, "%Y").strftime("%Y")

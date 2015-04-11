@@ -30,7 +30,7 @@
 }
 
 .blog a {
-  color: #00A;
+  color: #05A;
   text-decoration: underline;
 }
 
@@ -64,4 +64,8 @@
 
 .blog .post-list {
   font-size: 120%;
+}
+
+.blog .indent-block {
+  margin: 0 0 0 1rem;
 }

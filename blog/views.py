@@ -45,7 +45,7 @@ def archive(request, year, month=None):
     return render(request, 'archive.tpl', data)
 
 def post(request, pid, slug):
-    post = get_object_or_404(Post, id=pid)
+    post = get_object_or_404(Post, id=pid, status='p')
     if post.slug!=slug:
         return redirect('blog.views.post', pid=pid, slug=post.slug,
                         permanent=True)

@@ -5,6 +5,7 @@ from datetime import datetime
 from django.utils.text import slugify
 from django.db import models
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
@@ -14,11 +15,16 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.CharField(max_length=100, db_index=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True,
                                limit_choices_to={'parent':None})
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['parent__name', 'name']
 
     def __unicode__(self):
         if self.parent:
@@ -60,10 +66,6 @@ class Category(models.Model):
         return res
 
 
-    class Meta:
-        verbose_name_plural = 'Categories'
-        ordering = ['parent__name', 'name']
-
 class Post(models.Model):
     STATUS_CHOICES = (
         ('p', 'Published'),
@@ -71,17 +73,20 @@ class Post(models.Model):
         ('u', 'Unpublished')
     )
     title = models.CharField(max_length=100)
-    slug  = models.CharField(max_length=100, blank=True)
-    body  = models.TextField()
-    status  = models.CharField(max_length=2, choices=STATUS_CHOICES,  default='d')
+    slug = models.CharField(max_length=100, blank=True)
+    body = models.TextField()
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES,  default='d')
     created = models.DateTimeField(db_index=True, blank=True)
-    modified= models.DateTimeField(blank=True)
-    tags    = models.ManyToManyField(Tag, null=True, blank=True)
-    category= models.ForeignKey(Category, null=True, blank=True,
+    modified = models.DateTimeField(blank=True)
+    tags = models.ManyToManyField(Tag, null=True, blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True,
                                 limit_choices_to={'category__parent':None})
 
     class Meta:
         ordering = ['-created']
+
+    def __unicode__(self):
+        return self.title
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -90,12 +95,9 @@ class Post(models.Model):
         self.modified = datetime.now()
         super(Post, self).save(*args, **kwargs)
 
-
-    def __unicode__(self):
-        return self.title
-
     def preview(self):
         return markdown.markdown(self.body)
+
     preview.allow_tags = True
 
     def tagged(self):

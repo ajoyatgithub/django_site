@@ -1,16 +1,16 @@
-{% extends 'layout.tpl' %}
+{% extends '__layout.tpl' %}
 
 {% block title %}
   Posts under {{ category.name }}
 {% endblock %}
 
-{% block main %}
+{% block content %}
   <div class="four columns">
-    {% include 'category-tree.tpl' %}
+    {% include '_category-tree.tpl' %}
   </div>
   <div class="eight columns">
     <strong>Posts under Category: {{ category.name }}</strong>
     <br/>
-    {% include 'blog-list.tpl' %}
+    {% include '_blog-list.tpl' %}
   </div>
 {% endblock %}

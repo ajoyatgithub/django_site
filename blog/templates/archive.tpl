@@ -1,16 +1,16 @@
-{% extends 'layout.tpl' %}
+{% extends '__layout.tpl' %}
 
 {% block title %}
   Posts in {{ date }}
 {% endblock %}
 
-{% block main %}
+{% block content %}
   <div class="four columns">
-    {% include 'archive-tree.tpl' %}
+    {% include '_archive-tree.tpl' %}
   </div>
   <div class="eight columns">
     <strong>Posts in {{ date }}</strong>
     <br/>
-    {% include 'blog-list.tpl' %}
+    {% include '_blog-list.tpl' %}
   </div>
 {% endblock %}

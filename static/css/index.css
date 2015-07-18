@@ -1,31 +1,50 @@
-.blog {
-  color: #444;
+.text-center {
+  text-align: center;
 }
 
-.blog header {
+.text-justify {
+  text-align: justify;
+}
+
+.fonts150 {
+  font-size: 150%;
+}
+
+.fonts120 {
+  font-size: 120%;
+}
+
+.banner {
+  height: 10rem;
   padding-top: 1rem;
   border-bottom: 1px solid #666;
   margin-bottom: 3rem;
+  background: url("../images/trees-base.jpg") no-repeat scroll 50% 50% / cover;
+  background-attachment: fixed;
 }
 
-.blog header h1 {
+.banner h1 {
   font-size: 3.0rem;
   font-family: 'Arial', sans-serif;
   margin-bottom: 0rem;
 }
 
 @media (min-width: 550px) {
-  .blog header h1{
+  .banner h1{
     font-size: 3.6rem;
   }
 }
 
-.blog header a, .blog header h1, .blog header h6 {
-  color: #666;
+.banner a, .banner h1, .banner h6 {
+  color: #111;
   text-decoration: none;
 }
 
-.blog header a:hover {
+.banner a:hover {
+  color: #444;
+}
+
+.blog {
   color: #444;
 }
 
@@ -53,20 +72,20 @@
   border-color: #444;
 }
 
-.blog .text-center {
-  text-align: center;
-}
-
-.blog .text-justify {
-  text-align: justify;
-}
-
 .blog .related {
   border-top: 1px dashed #CCC;
   padding: 1rem;
 }
 
 .blog .post-list {
+  font-size: 150%;
+}
+
+.blog .post {
+  font-size: 120%;
+}
+
+.blog .archives, .blog .categories {
   font-size: 120%;
 }
 

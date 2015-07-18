@@ -1,16 +1,21 @@
-{% extends 'layout.tpl' %}
+{% extends '__layout.tpl' %}
 
 {% block title %}
   Posts in {{ date }}
 {% endblock %}
 
-{% block main %}
-  <div class="four columns">
-    {% include 'archive-tree.tpl' %}
-  </div>
-  <div class="eight columns">
-    <strong>Posts in {{ date }}</strong>
-    <br/>
-    {% include 'blog-list.tpl' %}
+{% block body %}
+  {% include '__header.tpl' %}
+  <div class="container blog">
+    <div class="row">
+	<div class="four columns archives">
+	  {% include '_archive-tree.tpl' %}
+	</div>
+	<div class="eight columns">
+	  <strong class="fonts120">Posts in {{ date }}</strong>
+	  <br/>
+	  {% include '_blog-list.tpl' %}
+	</div>
+    </div>
   </div>
 {% endblock %}

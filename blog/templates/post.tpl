@@ -1,10 +1,10 @@
-{% extends 'layout.tpl' %}
+{% extends '__layout.tpl' %}
 
 {% block title %}
   {{ post.title }}
 {% endblock %}
 
-{% block main %}
+{% block content %}
   <h1 class="text-center">{{ post.title }}</h1>
   <p>
     <span class="post-meta">
@@ -18,13 +18,13 @@
     </a>
     </span>
   </p>
-  <div class="text-justify">
+  <div class="post text-justify">
     {{ post.preview|safe}}
   </div>
   {% if posts %}
     <div class="related">
       <strong>Related Posts</strong>
-      {% include 'blog-list.tpl' %}
+      {% include '_blog-list.tpl' %}
     </div>
   {% endif %}
 {% endblock %}

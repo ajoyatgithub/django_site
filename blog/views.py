@@ -7,7 +7,6 @@ from blog.models import Category, Post, Tag
 
 def home(request):
     posts = Post.objects.filter(status='p')[0:30]
-    archives = Post.archive_tree()
     data = {}
     data['posts'] = posts
     return render(request, 'home.tpl', data)

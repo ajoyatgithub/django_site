@@ -1,4 +1,4 @@
-<strong>Archives</strong><br />
+<strong>Browse archives</strong><br />
 {% for y in archives %}
   &#8226; {{ y.year }}<br/>
   {% for m in y.months %}

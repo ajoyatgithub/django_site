@@ -1,4 +1,4 @@
-<strong>All categories</strong><br />
+<strong>Browse categories</strong><br />
 {% for c in categories %}
   &#8226; {{ c.name }}<br />
   {% for s in c.children %}

@@ -1,3 +1,7 @@
+body {
+    background-color: #ddd;
+}
+
 .text-center {
     text-align: center;
 }
@@ -24,9 +28,13 @@
 
 .banner h1 {
     font-size: 3.0rem;
-    font-family: 'Arial', sans-serif;
+    font-family: Baskerville, Baskerville Old Face, Times New Roman,serif;
     margin-top: 1rem;
     margin-bottom: 0rem;
+}
+
+.banner h6 {
+    font-family: Avant Garde, Avantgarde, AppleGothic, sans-serif;
 }
 
 @media (min-width: 550px) {

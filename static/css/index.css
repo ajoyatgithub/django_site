@@ -2,6 +2,10 @@ body {
     background-color: #ddd;
 }
 
+body h1{
+    font-family: 'Comfortaa', cursive;
+}
+
 .text-center {
     text-align: center;
 }
@@ -102,6 +106,7 @@ body {
 
 .blog .post {
     font-size: 120%;
+    font-family: 'Neuton', sans-serif;
 }
 
 .blog .archives, .blog .categories {

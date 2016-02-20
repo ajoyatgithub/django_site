@@ -27,4 +27,8 @@
       {% include '_blog-list.tpl' %}
     </div>
   {% endif %}
+  <div class="row">
+    <a href="{% url 'admin:blog_post_change' post.id %}">
+      [Edit this article]</a>
+  </div>
 {% endblock %}

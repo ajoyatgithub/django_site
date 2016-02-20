@@ -6,13 +6,13 @@
 
 {% block body %}
   {% include '__header.tpl' %}
-  <div class="container blog">
+  <div class="container">
     <div class="row">
-	<div class="three columns archives">
+	<div class="col-md-3">
 	  {% include '_archive-tree.tpl' %}
 	</div>
-	<div class="nine columns">
-	  <strong class="fonts120">Posts in {{ date }}</strong>
+	<div class="col-md-9">
+	  <strong>Posts in {{ date }}</strong>
 	  <br/>
 	  {% include '_blog-list.tpl' %}
 	</div>

@@ -2,7 +2,7 @@
 {% for c in categories %}
   &#8226; {{ c.name }}<br />
   {% for s in c.children %}
-    <p class="indent-block">
+    <p>
       <a href="{% url 'blog.views.category' s.slug %}">
 	{{ s.name }}
       </a>

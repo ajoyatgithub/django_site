@@ -5,9 +5,9 @@
 
 {% block body %}
   {% include '__header.tpl' %}
-  <div class="container blog">
+  <div class="container">
     <div class="row">
-      <div class="offset-by-one ten columns">
+      <div class="col-md-10 col-md-offset-1">
 	{% block content %}
 	{% endblock %}
       </div>

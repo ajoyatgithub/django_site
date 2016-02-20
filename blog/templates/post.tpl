@@ -10,7 +10,7 @@
   </h1>
 
   <p>
-    <span class="post-meta">
+    <span>
       {% if request.user.is_staff %}
         <a href="{% url 'admin:blog_post_change' post.id %}">
           [Edit Post]</a>
@@ -26,11 +26,11 @@
       </a>
     </span>
   </p>
-  <div class="post text-justify">
+  <div class="text-justify">
     {{ post.preview|safe}}
   </div>
   {% if posts %}
-    <div class="related">
+    <div>
       <strong>Related Posts</strong>
       {% include '_blog-list.tpl' %}
     </div>

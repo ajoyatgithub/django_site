@@ -1,4 +1,4 @@
-<header class="banner bg-grad-stars">
+<header>
   <div class="text-center">
     <h1><a href="{% url 'blog.views.home' %}">WEBLOG</a></h1>
     <h6>

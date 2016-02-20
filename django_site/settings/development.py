@@ -2,8 +2,6 @@ from django_site.settings import *
 
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',

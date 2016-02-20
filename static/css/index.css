@@ -2,122 +2,22 @@ body {
     background-color: #ddd;
 }
 
-body h1{
+.font-comfortaa {
     font-family: 'Comfortaa', cursive;
 }
 
-.text-center {
-    text-align: center;
-}
-
-.text-justify {
-    text-align: justify;
-}
-
-.fonts150 {
-    font-size: 150%;
-}
-
-.fonts120 {
-    font-size: 120%;
-}
-
-.banner {
-    height: 10rem;
-    padding-top: 1rem;
-    border-bottom: 1px solid #666;
-    margin-bottom: 3rem;
-    background-attachment: fixed;
-}
-
-.banner h1 {
-    font-size: 3.0rem;
+.font-baskerville {
     font-family: Baskerville, Baskerville Old Face, Times New Roman,serif;
-    margin-top: 1rem;
-    margin-bottom: 0rem;
 }
 
-.banner h6 {
+.font-avant-garde {
     font-family: Avant Garde, Avantgarde, AppleGothic, sans-serif;
 }
 
-@media (min-width: 550px) {
-    .banner h1{
-        font-size: 3.6rem;
-    }
-}
-
-.banner a, .banner h1, .banner h6 {
-    color: #111;
-    text-decoration: none;
-}
-
-.bg-grad-stars {
-    background-color:black;
-    background-image:
-    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-}
-
-.bg-grad-stars a, .bg-grad-stars h6 {
-    color: #eee;
-}
-
-.blog {
-    color: #444;
-}
-
-.blog a {
-    color: #05A;
-    text-decoration: underline;
-}
-
-.blog a:hover {
-    color: #444;
-    text-decoration: none;
-}
-
-.blog .post-date {
+.font-monaco {
     font-family: Monaco, 'Courier New', monospace;
-    font-size: 70%;
-    color: #999;
 }
 
-.blog .post-meta{
-    color: #222;
-}
-
-.blog hr {
-    border-color: #444;
-}
-
-.blog .related {
-    border-top: 1px dashed #CCC;
-    padding: 1rem;
-}
-
-.blog .post-list {
-    font-size: 150%;
-}
-
-.blog .post {
-    font-size: 120%;
+.font-neuton {
     font-family: 'Neuton', sans-serif;
-}
-
-.blog .archives, .blog .categories {
-    font-size: 90%;
-}
-
-.blog .indent-block {
-    margin: 0 0 0 1rem;
-}
-
-.blog blockquote {
-    padding-left: 1rem;
-    border-left: 0.5rem solid #ccc;
 }

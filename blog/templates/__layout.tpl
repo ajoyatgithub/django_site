@@ -6,12 +6,20 @@
 
 {% block body %}
   <div class="container">
+
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         {% include '_header.tpl' %}
-	{% block content %}
-	{% endblock %}
       </div>
     </div>
+
+    {% block container %}
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+	  {% block content %}
+	  {% endblock %}
+        </div>
+      </div>
+    {% endblock %}
   </div>
 {% endblock %}

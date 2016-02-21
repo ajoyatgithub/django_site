@@ -105,7 +105,8 @@ class Post(models.Model):
 
     def related(self):
         tags = self.tags.all()
-        return Post.objects.filter(tags__in=tags).exclude(id=self.id).distinct()
+        return Post.objects.filter(status='p', tags__in=tags).exclude(
+            id=self.id).distinct()
 
     @classmethod
     def archive_tree(cls):

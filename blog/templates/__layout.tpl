@@ -21,5 +21,12 @@
         </div>
       </div>
     {% endblock %}
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        {% include '_footer.tpl' %}
+      </div>
+    </div>
+
   </div>
 {% endblock %}

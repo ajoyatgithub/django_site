@@ -38,3 +38,12 @@ body {
 .banner {
     border-bottom: 1px #333 solid;
 }
+
+.text-gray {
+    color: #666;
+}
+
+.text-post {
+    font-size: 140%;
+    font-weight: 500;
+}

@@ -2,6 +2,7 @@ import markdown
 import itertools
 from datetime import datetime
 
+from django.core.urlresolvers import reverse
 from django.utils.text import slugify
 from django.db import models
 
@@ -35,6 +36,9 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog:category', kwargs=dict(slug=self.slug))
 
     def children(self):
         return Category.objects.filter(parent=self)
@@ -95,6 +99,9 @@ class Post(models.Model):
         self.modified = datetime.now()
         super(Post, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('blog:post', kwargs=dict(pid=self.id, slug=self.slug))
+
     def preview(self):
         return markdown.markdown(self.body)
 
@@ -105,7 +112,8 @@ class Post(models.Model):
 
     def related(self):
         tags = self.tags.all()
-        return Post.objects.filter(tags__in=tags).exclude(id=self.id).distinct()
+        return Post.objects.filter(status='p', tags__in=tags).exclude(
+            id=self.id).distinct()
 
     @classmethod
     def archive_tree(cls):

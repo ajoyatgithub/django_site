@@ -12,11 +12,6 @@
 {% block content %}
   <h2 class="font-comfortaa">
     {{ post.title }}
-    {% if request.user.is_staff %}
-      <a href="{% url 'admin:blog_post_change' post.id %}"
-         class="font-size-70pc">
-        [Edit]</a>
-    {% endif %}
   </h2>
 
   <h5 class="text-gray">

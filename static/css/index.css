@@ -1,7 +1,3 @@
-body {
-    background-color: #f9f9f9;
-}
-
 .font-comfortaa {
     font-family: 'Comfortaa', cursive;
 }
@@ -22,15 +18,6 @@ body {
     font-family: 'Neuton', sans-serif;
 }
 
-
-.list-group-item.title, .list-group-item.title:hover,
-.list-group-item.title:focus {
-    z-index: 2;
-    color: #fff;
-    background-color: #868686;
-    border-color: #868686;
-}
-
 .font-size-70pc {
     font-size: 70%;
 }
@@ -42,4 +29,27 @@ body {
 .text-post {
     font-size: 140%;
     font-weight: 500;
+}
+
+/*
+   Classes for simple side navigation in category and archive tree
+*/
+
+.nav-item {
+    padding: 5px;
+}
+
+.item-head {
+    list-style: none;
+    border-left: 1px solid #ddd;
+}
+
+.item-link {
+    display: block;
+    padding-left: 15px;
+    border-left: 1px solid #fff;
+}
+
+.item-link:hover, .item-link:active, .item-link:focus {
+    border-left: 1px solid #777;
 }

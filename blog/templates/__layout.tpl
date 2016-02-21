@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-  {% include '__header.tpl' %}
   <div class="container">
+    {% include '__header.tpl' %}
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
 	{% block content %}

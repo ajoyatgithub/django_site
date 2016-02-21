@@ -34,3 +34,7 @@ body {
 .font-size-70pc {
     font-size: 70%;
 }
+
+.banner {
+    border-bottom: 1px #333 solid;
+}

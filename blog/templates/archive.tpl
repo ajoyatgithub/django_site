@@ -1,19 +1,28 @@
 {% extends '__layout.tpl' %}
 
+{% block meta_tags %}
+  {{ block.super }}
+  <meta name="description"
+        content="Posts created in {{date}}" />
+{% endblock %}
+
 {% block title %}
-  Posts in {{ date }}
+  Posts | {{ date }}
 {% endblock %}
 
 {% block body %}
-  {% include '__header.tpl' %}
-  <div class="container blog">
+  <div class="container">
     <div class="row">
-	<div class="three columns archives">
+      <div class="col-md-10 col-md-offset-1">
+        {% include '_header.tpl' %}
+      </div>
+    </div>
+    <div class="row">
+	<div class="col-md-3 col-md-offset-1">
 	  {% include '_archive-tree.tpl' %}
 	</div>
-	<div class="nine columns">
-	  <strong class="fonts120">Posts in {{ date }}</strong>
-	  <br/>
+	<div class="col-md-7">
+	  <h4>Posts in {{ date }}</h4>
 	  {% include '_blog-list.tpl' %}
 	</div>
     </div>

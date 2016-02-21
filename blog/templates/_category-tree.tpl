@@ -1,11 +1,12 @@
-<strong>Browse categories</strong><br />
-{% for c in categories %}
-  &#8226; {{ c.name }}<br />
-  {% for s in c.children %}
-    <p class="indent-block">
-      <a href="{% url 'blog.views.category' s.slug %}">
+<h4>Browse categories</h4>
+  {% for c in categories %}
+    <li class="nav-item item-head text-gray">
+      {{ c.name }}
+    </li>
+    {% for s in c.children %}
+      <a href="{% url 'blog.views.category' s.slug %}"
+         class="nav-item item-link">
 	{{ s.name }}
       </a>
-    </p>
+    {% endfor %}
   {% endfor %}
-{% endfor %}

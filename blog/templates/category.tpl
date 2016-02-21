@@ -1,19 +1,28 @@
 {% extends '__layout.tpl' %}
 
+{% block meta_tags %}
+  {{ block.super }}
+  <meta name="description"
+        content="Posts created under {{category.name}}. Browse all categories" >
+{% endblock %}
+
 {% block title %}
-  Posts under {{ category.name }}
+  Posts | {{ category.name }}
 {% endblock %}
 
 {% block body %}
-  {% include '__header.tpl' %}
-  <div class="container blog">
+  <div class="container">
     <div class="row">
-      <div class="three columns categories">
+      <div class="col-md-10 col-md-offset-1">
+        {% include '_header.tpl' %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1">
 	{% include '_category-tree.tpl' %}
       </div>
-      <div class="nine columns">
-	<strong class="fonts120">Posts under {{ category.name }}</strong>
-	<br/>
+      <div class="col-md-7">
+	<h4>Posts under {{ category.name }}</h4>
 	{% include '_blog-list.tpl' %}
       </div>
     </div>

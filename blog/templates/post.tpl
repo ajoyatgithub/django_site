@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
+  <h2 class="font-comfortaa">
     {{ post.title }}
     {% if request.user.is_staff %}
       <a href="{% url 'admin:blog_post_change' post.id %}"
          class="font-size-70pc">
         [Edit]</a>
     {% endif %}
-  </h1>
+  </h2>
 
-  <h4 class="text-gray">
+  <h5 class="text-gray">
     <span>
 
       <a href="{% url 'blog.views.archive' post.created|date:'Y' post.created|date:'m' %}">
@@ -26,7 +26,7 @@
         {{ post.category.name }}
       </a>
     </span>
-  </h4>
+  </h5>
 
   <div class="text-justify text-post font-neuton">
     {{ post.preview|safe}}

@@ -6,7 +6,7 @@
 
 {% block body %}
   <div class="container">
-    {% include '__header.tpl' %}
+    {% include '_header.tpl' %}
     <div class="row">
 	<div class="col-md-3">
 	  {% include '_archive-tree.tpl' %}

@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        {% include '__header.tpl' %}
+        {% include '_header.tpl' %}
 	{% block content %}
 	{% endblock %}
       </div>

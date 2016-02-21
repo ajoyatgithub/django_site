@@ -1,7 +1,13 @@
 {% extends '__layout.tpl' %}
 
+{% block meta_tags %}
+  {{ block.super }}
+  <meta name="description"
+        content="Posts created under {{category.name}}. Browse all categories" >
+{% endblock %}
+
 {% block title %}
-  Posts under {{ category.name }}
+  Posts | {{ category.name }}
 {% endblock %}
 
 {% block body %}

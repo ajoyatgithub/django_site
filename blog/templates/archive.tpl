@@ -1,7 +1,13 @@
 {% extends '__layout.tpl' %}
 
+{% block meta_tags %}
+  {{ block.super }}
+  <meta name="description"
+        content="Posts created in {{date}}" />
+{% endblock %}
+
 {% block title %}
-  Posts in {{ date }}
+  Posts | {{ date }}
 {% endblock %}
 
 {% block body %}

@@ -1,5 +1,10 @@
 {% extends '__layout.tpl' %}
 
+{% block meta_tags %}
+  {{ block.super }}
+  <meta name="description" content="Author: Ajoy Oommen" />
+{% endblock %}
+
 {% block title %}
   {{ post.title }}
 {% endblock %}

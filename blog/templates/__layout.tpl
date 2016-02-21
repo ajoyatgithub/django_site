@@ -1,6 +1,7 @@
 {% extends '__base.html' %}
 
 {% block title %}
+  WebLog by Ajoy Oommen
 {% endblock %}
 
 {% block body %}

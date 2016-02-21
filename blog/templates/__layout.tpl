@@ -1,13 +1,14 @@
 {% extends '__base.html' %}
 
 {% block title %}
+  WebLog by Ajoy Oommen
 {% endblock %}
 
 {% block body %}
-  {% include '__header.tpl' %}
-  <div class="container blog">
+  <div class="container">
     <div class="row">
-      <div class="offset-by-one ten columns">
+      <div class="col-md-10 col-md-offset-1">
+        {% include '_header.tpl' %}
 	{% block content %}
 	{% endblock %}
       </div>

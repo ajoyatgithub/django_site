@@ -10,6 +10,13 @@
 {% endblock %}
 
 {% block content %}
+
+  {% if not post.is_published %}
+    <p class="alert alert-info text-center">
+      Status : <strong>{{ post.get_status_display }}</strong>!
+      To publish this post, go to admin using the links below. </p>
+  {% endif %}
+
   <h2 class="font-comfortaa">
     {{ post.title }}
   </h2>

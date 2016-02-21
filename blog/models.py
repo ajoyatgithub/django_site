@@ -102,6 +102,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post', kwargs=dict(pid=self.id, slug=self.slug))
 
+    def is_published(self):
+        return self.status == 'p'
+
     def preview(self):
         return markdown.markdown(self.body)
 

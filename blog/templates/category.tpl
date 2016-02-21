@@ -10,21 +10,14 @@
   Posts | {{ category.name }}
 {% endblock %}
 
-{% block body %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        {% include '_header.tpl' %}
-      </div>
+{% block container %}
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      {% include '_category-tree.tpl' %}
     </div>
-    <div class="row">
-      <div class="col-md-3 col-md-offset-1">
-	{% include '_category-tree.tpl' %}
-      </div>
-      <div class="col-md-7">
-	<h4>Posts under {{ category.name }}</h4>
-	{% include '_blog-list.tpl' %}
-      </div>
+    <div class="col-md-7">
+      <h4>Posts under {{ category.name }}</h4>
+      {% include '_blog-list.tpl' %}
     </div>
   </div>
 {% endblock %}

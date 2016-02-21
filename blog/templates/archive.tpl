@@ -12,7 +12,7 @@
 	  {% include '_archive-tree.tpl' %}
 	</div>
 	<div class="col-md-9">
-	  <strong>Posts in {{ date }}</strong>
+	  <h4>Posts in {{ date }}</h4>
 	  <br/>
 	  {% include '_blog-list.tpl' %}
 	</div>

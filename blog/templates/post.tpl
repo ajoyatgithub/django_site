@@ -26,12 +26,14 @@
       </a>
     </span>
   </p>
+
   <div class="text-justify">
     {{ post.preview|safe}}
   </div>
+
   {% if posts %}
-    <div>
-      <strong>Related Posts</strong>
+    <div class="row">
+      <h4>Related Posts</h4>
       {% include '_blog-list.tpl' %}
     </div>
   {% endif %}

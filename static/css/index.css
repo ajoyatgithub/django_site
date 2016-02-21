@@ -21,3 +21,16 @@ body {
 .font-neuton {
     font-family: 'Neuton', sans-serif;
 }
+
+
+.list-group-item.title, .list-group-item.title:hover,
+.list-group-item.title:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #868686;
+    border-color: #868686;
+}
+
+.font-size-70pc {
+    font-size: 70%;
+}

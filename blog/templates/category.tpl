@@ -12,7 +12,7 @@
 	{% include '_category-tree.tpl' %}
       </div>
       <div class="col-md-9">
-	<strong>Posts under {{ category.name }}</strong>
+	<h4>Posts under {{ category.name }}</h4>
 	<br/>
 	{% include '_blog-list.tpl' %}
       </div>

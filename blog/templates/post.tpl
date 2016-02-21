@@ -22,12 +22,12 @@
   <h5 class="text-gray">
     <span>
 
-      <a href="{% url 'blog.views.archive' post.created|date:'Y' post.created|date:'m' %}">
+      <a href="{% url 'blog:archives_month' post.created|date:'Y' post.created|date:'m' %}">
         {{ post.created|date:'F j, Y' }}
       </a> |
 
       Posted in
-      <a href="{% url 'blog.views.category' post.category.slug %}">
+      <a href="{% url 'blog:category' post.category.slug %}">
         {{ post.category.name }}
       </a>
     </span>

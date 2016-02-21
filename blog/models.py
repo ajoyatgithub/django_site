@@ -2,6 +2,7 @@ import markdown
 import itertools
 from datetime import datetime
 
+from django.core.urlresolvers import reverse
 from django.utils.text import slugify
 from django.db import models
 
@@ -35,6 +36,9 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog:category', kwargs=dict(slug=self.slug))
 
     def children(self):
         return Category.objects.filter(parent=self)

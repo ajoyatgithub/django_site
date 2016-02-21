@@ -5,9 +5,9 @@ from blog import views
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.home),
-    url(r'^(?P<pid>\d+)/(?P<slug>[-\w\d]+)$', views.post),
-    url(r'^category/(?P<slug>[-\w\d]+)/$', views.category),
+    url(r'^$', views.home, name="index"),
+    url(r'^(?P<pid>\d+)/(?P<slug>[-\w\d]+)$', views.post, name="post"),
+    url(r'^category/(?P<slug>[-\w\d]+)/$', views.category, name="category"),
     url(r'^c/(?P<slug>[-\w\d]+)/$',
         RedirectView.as_view(pattern_name='blog.views.category')),
     url(r'^archives/(?P<year>\d+)/$',

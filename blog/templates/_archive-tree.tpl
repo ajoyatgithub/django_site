@@ -4,7 +4,7 @@
       {{ y.year }}
     </li>
     {% for m in y.months %}
-      <a href="{% url 'blog.views.archive' y.year m.month  %}"
+      <a href="{% url 'blog:archives_month' y.year m.month  %}"
          class="nav-item item-link">
 	{{ m.name }}
       </a>

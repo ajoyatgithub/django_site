@@ -1,4 +1,4 @@
-from django_site.settings import *
+from weblog.settings import *
 
 DEBUG = True
 

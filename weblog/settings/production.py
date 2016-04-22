@@ -1,0 +1,1 @@
+from weblog.settings import *

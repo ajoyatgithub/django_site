@@ -52,9 +52,9 @@ TEMPLATES = [
     },
 ]
 
-ROOT_URLCONF = 'django_site.urls'
+ROOT_URLCONF = 'weblog.urls'
 
-WSGI_APPLICATION = 'django_site.wsgi.application'
+WSGI_APPLICATION = 'weblog.wsgi.application'
 
 
 # Database

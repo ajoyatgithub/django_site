@@ -104,6 +104,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:post', kwargs=dict(pid=self.id, slug=self.slug))
 
+    def publish(self):
+        self.status = 'p'
+        self.save()
+
+    def unpublish(self):
+        self.status = 'u'
+        self.save()
+
     def is_published(self):
         return self.status == 'p'
 

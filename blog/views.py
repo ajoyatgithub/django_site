@@ -4,7 +4,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View
 
-from blog.models import Category, Post, Tag
+from blog.models import Category, Post
 
 
 class IndexView(View):
@@ -51,7 +51,7 @@ class PostView(View):
             post = get_object_or_404(Post, id=pid)
         else:
             post = get_object_or_404(Post, id=pid, status='p')
-        if post.slug!=slug:
+        if post.slug != slug:
             return redirect('blog:post', pid=pid, slug=post.slug,
                             permanent=True)
         related = post.related()

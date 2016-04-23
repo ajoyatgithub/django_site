@@ -21,7 +21,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.CharField(max_length=100, db_index=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True,
-                               limit_choices_to={'parent':None})
+                               limit_choices_to={'parent': None})
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -47,7 +47,8 @@ class Category(models.Model):
         children = self.children().values('id', 'name', 'slug')
         if children:
             for c in children:
-                childs_descendants = Category.objects.get(id=c['id']).descendants()
+                childs_descendants = Category.objects.get(
+                    id=c['id']).descendants()
                 if childs_descendants:
                     c['children'] = childs_descendants
                 else:
@@ -79,12 +80,13 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.CharField(max_length=100, blank=True)
     body = models.TextField()
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES,  default='d')
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES,
+                              default='d')
     created = models.DateTimeField(db_index=True, blank=True)
     modified = models.DateTimeField(blank=True)
     tags = models.ManyToManyField(Tag, null=True, blank=True)
     category = models.ForeignKey(Category, null=True, blank=True,
-                                limit_choices_to={'category__parent':None})
+                                 limit_choices_to={'category__parent': None})
 
     class Meta:
         ordering = ['-created']
@@ -121,23 +123,23 @@ class Post(models.Model):
     @classmethod
     def archive_tree(cls):
         dates = Post.objects.filter(status='p').values('created')
-        date_list = [d['created'].date() for d in dates]
+        d_list = [d['created'].date() for d in dates]
 
         tree = []
         # Group by year
         tree = [{
-            'year' : year,
+            'year': year,
             'months': [{
                 'month': g.month,
-                'name' : g.strftime('%B')
+                'name': g.strftime('%B')
             } for g in group]
-        } for year, group in itertools.groupby(date_list, key=lambda x: x.year)]
+        } for year, group in itertools.groupby(d_list, key=lambda x: x.year)]
 
         # Group by month
         for y in tree:
             y['months'] = [{
                 'month': month,
-                'name' : [g['name'] for g in group][0]
+                'name': [g['name'] for g in group][0]
             } for month, group in itertools.groupby(
                 y['months'],
                 key=lambda x: x['month']

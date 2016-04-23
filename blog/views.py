@@ -13,16 +13,13 @@ class IndexView(View):
         return render(request, 'home.tpl', dict(posts=posts))
 
 
-def category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
-    posts = category.post_set.filter(status='p')
-    data = {
-        'categories': Category.tree(),
-        'posts': posts,
-        'category': category
-    }
-    data['posts'] = posts
-    return render(request, 'category.tpl', data)
+class CategoryView(View):
+    def get(self, request, slug):
+        category = get_object_or_404(Category, slug=slug)
+        posts = category.post_set.filter(status='p')
+        return render(request, 'category.tpl', dict(
+            categories=Category.tree(), posts=posts, category=category
+        ))
 
 def archive(request, year, month=None):
     posts = Post.objects.filter(status='p')

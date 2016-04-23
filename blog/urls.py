@@ -7,7 +7,8 @@ urlpatterns = patterns(
     '',
     url(r'^$', views.IndexView.as_view(), name="index"),
     url(r'^(?P<pid>\d+)/(?P<slug>[-\w\d]+)$', views.post, name="post"),
-    url(r'^category/(?P<slug>[-\w\d]+)/$', views.category, name="category"),
+    url(r'^category/(?P<slug>[-\w\d]+)/$', views.CategoryView.as_view(),
+        name="category"),
     url(r'^archives/(?P<year>\d+)/(?P<month>\d+)/$',
         views.archive, name="archives_month"),
 )

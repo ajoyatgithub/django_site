@@ -2,14 +2,16 @@ from datetime import datetime
 
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import View
 
 from blog.models import Category, Post, Tag
 
-def home(request):
-    posts = Post.objects.filter(status='p')[0:30]
-    data = {}
-    data['posts'] = posts
-    return render(request, 'home.tpl', data)
+
+class IndexView(View):
+    def get(self, request):
+        posts = Post.objects.filter(status='p')[0:30]
+        return render(request, 'home.tpl', dict(posts=posts))
+
 
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)

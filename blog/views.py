@@ -21,26 +21,29 @@ class CategoryView(View):
             categories=Category.tree(), posts=posts, category=category
         ))
 
-def archive(request, year, month=None):
-    posts = Post.objects.filter(status='p')
-    data = {
-        'archives': Post.archive_tree()
-    }
-    if year:
-        try:
-            data['date'] = datetime.strptime("%s" % year, "%Y").strftime("%Y")
-        except ValueError:
-            raise Http404('Invalid year')
-        posts = posts.filter(created__year=year)
-    if month:
-        date_str = "%s,%s" % (month, year)
-        try:
-            data['date'] = datetime.strptime(date_str, "%m,%Y").strftime("%B %Y")
-        except ValueError:
-            raise Http404('Invalid year or month')
-        posts = posts.filter(created__month=month)
-    data['posts'] = posts
-    return render(request, 'archive.tpl', data)
+
+class ArchiveView(View):
+    def get(self, request, year, month=None):
+        posts = Post.objects.filter(status='p')
+        data = dict(archives=Post.archive_tree())
+        if year:
+            try:
+                data['date'] = datetime.strptime(
+                    "%s" % year, "%Y").strftime("%Y")
+            except ValueError:
+                raise Http404('Invalid year')
+            posts = posts.filter(created__year=year)
+        if month:
+            date_str = "%s,%s" % (month, year)
+            try:
+                data['date'] = datetime.strptime(
+                    date_str, "%m,%Y").strftime("%B %Y")
+            except ValueError:
+                raise Http404('Invalid year or month')
+            posts = posts.filter(created__month=month)
+        data['posts'] = posts
+        return render(request, 'archive.tpl', data)
+
 
 def post(request, pid, slug):
     if request.user.is_staff:

@@ -45,16 +45,14 @@ class ArchiveView(View):
         return render(request, 'archive.tpl', data)
 
 
-def post(request, pid, slug):
-    if request.user.is_staff:
-        post = get_object_or_404(Post, id=pid)
-    else:
-        post = get_object_or_404(Post, id=pid, status='p')
-    if post.slug!=slug:
-        return redirect('blog:post', pid=pid, slug=post.slug,
-                        permanent=True)
-    data = {}
-    data['post'] = post
-    related = post.related()
-    data['posts'] = related
-    return render(request, 'post.tpl', data)
+class PostView(View):
+    def get(self, request, pid, slug):
+        if request.user.is_staff:
+            post = get_object_or_404(Post, id=pid)
+        else:
+            post = get_object_or_404(Post, id=pid, status='p')
+        if post.slug!=slug:
+            return redirect('blog:post', pid=pid, slug=post.slug,
+                            permanent=True)
+        related = post.related()
+        return render(request, 'post.tpl', dict(post=post, posts=related))

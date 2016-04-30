@@ -13,7 +13,7 @@ class BlogViewsTestCase(test.TestCase):
         category.save()
         # Create a draft
         _post = Post(title='Random thoughts of the author',
-                    body='Thoughts turned to words.', category=category)
+                     body='Thoughts turned to words.', category=category)
         _post.save()
         self.draft = _post
         # Publish a post

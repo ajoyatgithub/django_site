@@ -46,13 +46,17 @@ class ArchiveView(View):
 
 
 class PostView(View):
-    def get(self, request, pid, slug):
+    def get(self, request, year, month, day, slug):
         if request.user.is_staff:
-            post = get_object_or_404(Post, id=pid)
+            post = get_object_or_404(Post, slug__icontains=slug,
+                                     created__year=year, created__month=month,
+                                     created__day=day)
         else:
-            post = get_object_or_404(Post, id=pid, status='p')
+            post = get_object_or_404(Post, slug__icontains=slug,
+                                     created__year=year, created__month=month,
+                                     created__day=day, status='p')
         if post.slug != slug:
-            return redirect('blog:post', pid=pid, slug=post.slug,
-                            permanent=True)
+            return redirect('blog:post', year=year, month=month, day=day,
+                            slug=post.slug, permanent=True)
         related = post.related()
         return render(request, 'post.tpl', dict(post=post, posts=related))

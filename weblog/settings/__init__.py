@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SITE_ROOT = os.path.realpath(os.path.dirname('..'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9-9doo*byuf5ya2n+#v1#z*7+9k)qz)5x681cdipms_@ps4spg'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 

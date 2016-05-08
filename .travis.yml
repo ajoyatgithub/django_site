@@ -4,7 +4,7 @@ python:
   - 2.7
 
 env:
-  - DBNAME="weblog" DBUSER="postgres" DBPASS="" STATIC_ROOT="" MEDIA_ROOT=""
+  - DBNAME="weblog" DBUSER="postgres" DBPASS="" STATIC_ROOT="" MEDIA_ROOT="" SECRET_KEY="asdfg"
 
 install:
   - pip install -r requirements.txt

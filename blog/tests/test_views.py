@@ -33,8 +33,10 @@ class BlogViewsTestCase(test.TestCase):
         self.assertIn(self.post, posts)
 
     def test_post_view(self):
-        post_url = reverse('blog:post', kwargs=dict(pid=self.post.id,
-                                                    slug=self.post.slug))
+        created = self.post.created
+        post_url = reverse('blog:post', kwargs=dict(
+            year=created.year, month=created.month, day=created.day,
+            slug=self.post.slug))
         response = self.client.get(post_url)
         self.assertEqual(response.status_code, 200)
         post = response.context['post']
@@ -43,7 +45,9 @@ class BlogViewsTestCase(test.TestCase):
         self.assertEqual(posts.count(), 0)
 
     def test_draft_view(self):
-        draft_url = reverse('blog:post', kwargs=dict(pid=self.draft.id,
-                                                     slug=self.draft.slug))
+        created = self.draft.created
+        draft_url = reverse('blog:post', kwargs=dict(
+            year=created.year, month=created.month, day=created.day,
+            slug=self.draft.slug))
         response = self.client.get(draft_url)
         self.assertEqual(response.status_code, 404)

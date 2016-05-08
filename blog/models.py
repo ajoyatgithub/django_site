@@ -102,7 +102,18 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('blog:post', kwargs=dict(pid=self.id, slug=self.slug))
+        return reverse('blog:post', kwargs=dict(
+            year=self.year(), month=self.month(), day=self.day(),
+            slug=self.slug))
+
+    def year(self):
+        return "{0}".format(self.created.year)
+
+    def month(self):
+        return "{0:02d}".format(self.created.month)
+
+    def day(self):
+        return "{0:02d}".format(self.created.day)
 
     def publish(self):
         self.status = 'p'

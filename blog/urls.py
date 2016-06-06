@@ -1,10 +1,9 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from blog import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
     url(r'^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<slug>[-\w\d]+)$',
         views.PostView.as_view(), name="post"),
@@ -12,4 +11,4 @@ urlpatterns = patterns(
         name="category"),
     url(r'^(?P<year>\d+)/(?P<month>\d+)/$',
         views.ArchiveView.as_view(), name="archives_month"),
-)
+]

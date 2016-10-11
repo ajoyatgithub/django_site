@@ -1,9 +1,12 @@
 from django.contrib import admin
 
+from django.db.models import TextField
+from django_markdown.admin import AdminMarkdownWidget, MarkdownModelAdmin
+
 from blog.models import Category, Post, Tag
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(MarkdownModelAdmin):
     model = Post
     readonly_fields = ['modified', 'slug', 'tagged']
     filter_horizontal = ['tags', ]
@@ -24,6 +27,8 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title']
     list_per_page = 50
     save_on_top = True
+
+    formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
 
 
 class CategoryAdmin(admin.ModelAdmin):

@@ -1,5 +1,7 @@
 {% extends '__layout.tpl' %}
 
+{% load django_markdown %}
+
 {% block meta_tags %}
   {{ block.super }}
   <meta name="description" content="Author: Ajoy Oommen" />
@@ -36,7 +38,7 @@
   </h5>
 
   <div class="text-justify text-post font-neuton">
-    {{ post.preview|safe}}
+    {{ post.body|markdown}}
   </div>
 
   {% if posts %}

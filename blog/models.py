@@ -1,8 +1,7 @@
-import markdown
 import itertools
-from datetime import datetime
 
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 from django.utils.text import slugify
 from django.db import models
 
@@ -97,8 +96,8 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         if not self.id:
-            self.created = datetime.now()
-        self.modified = datetime.now()
+            self.created = timezone.now()
+        self.modified = timezone.now()
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -125,11 +124,6 @@ class Post(models.Model):
 
     def is_published(self):
         return self.status == 'p'
-
-    def preview(self):
-        return markdown.markdown(self.body)
-
-    preview.allow_tags = True
 
     def tagged(self):
         return ", ".join([t['name'] for t in self.tags.values()])

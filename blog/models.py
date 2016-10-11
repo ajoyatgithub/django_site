@@ -1,4 +1,3 @@
-import markdown
 import itertools
 
 from django.core.urlresolvers import reverse
@@ -125,11 +124,6 @@ class Post(models.Model):
 
     def is_published(self):
         return self.status == 'p'
-
-    def preview(self):
-        return markdown.markdown(self.body)
-
-    preview.allow_tags = True
 
     def tagged(self):
         return ", ".join([t['name'] for t in self.tags.values()])

@@ -14,7 +14,7 @@ class PostAdmin(MarkdownModelAdmin):
         (None, {
             'fields': (('title', 'status'),
                        ('body', ),
-                       ('category', 'tags'))
+                       ('category', 'tags'), ('owner', ))
         }),
         ('Edit creation date', {
             'classes': ('collapse', ),

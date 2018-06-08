@@ -1,9 +1,11 @@
+
 import itertools
 
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Tag(models.Model):
@@ -86,6 +88,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, null=True, blank=True)
     category = models.ForeignKey(Category, null=True, blank=True,
                                  limit_choices_to={'category__parent': None})
+    owner = models.ForeignKey(User, null=True, blank=True)
 
     class Meta:
         ordering = ['-created']

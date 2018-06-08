@@ -33,7 +33,8 @@
       Posted in
       <a href="{% url 'blog:category' post.category.slug %}">
         {{ post.category.name }}
-      </a>
+      </a> |
+       {{ post.owner }}
     </span>
   </h5>
 

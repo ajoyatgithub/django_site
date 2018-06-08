@@ -7,7 +7,7 @@ Markdown==2.6.7
 path.py==8.1.2
 pexpect==4.0.1
 pickleshare==0.6
-psycopg2==2.6
+psycopg2
 ptyprocess==0.5.1
 simplegeneric==0.8.1
 sqlparse==0.2.1

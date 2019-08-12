@@ -1,4 +1,4 @@
-from weblog.settings import *
+from weblog.settings.base import *
 
 
 SOUTH_TESTS_MIGRATE = False

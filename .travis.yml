@@ -2,7 +2,8 @@ sudo: false
 language: python
 python:
   - 3.6
-
+services:
+  - postgresql
 env:
   - DBNAME="weblog" DBUSER="postgres" DBPASS="" STATIC_ROOT="" MEDIA_ROOT="" SECRET_KEY="asdfg" AWS_STORAGE_BUCKET_NAME="blog-static"
 

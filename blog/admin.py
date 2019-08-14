@@ -21,8 +21,8 @@ class PostAdmin(MarkdownModelAdmin):
             'fields': (('created', 'modified', 'slug'), )
         })
     )
-    list_display = ['title', 'created', 'modified', 'status']
-    list_editable = ['status', ]
+    list_display = ['title', 'created', 'status', 'owner']
+    list_editable = ['status', 'owner']
     list_filter = ['category', 'status']
     search_fields = ['title']
     list_per_page = 50

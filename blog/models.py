@@ -1,4 +1,3 @@
-
 import itertools
 
 from django.core.urlresolvers import reverse
@@ -14,7 +13,7 @@ class Tag(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -28,7 +27,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
         ordering = ['parent__name', 'name']
 
-    def __unicode__(self):
+    def __str__(self):
         if self.parent:
             return "%s (%s)" % (self.name, self.parent)
         else:
@@ -93,7 +92,7 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):

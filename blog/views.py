@@ -9,7 +9,7 @@ from blog.models import Category, Post
 
 class IndexView(View):
     def get(self, request):
-        posts = Post.objects.filter(status='p')[0:30]
+        posts = Post.objects.filter(status='p')
         return render(request, 'home.tpl', dict(posts=posts))
 
 

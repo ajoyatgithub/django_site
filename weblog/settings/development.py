@@ -1,7 +1,6 @@
-from weblog.settings import *
+from weblog.settings.base import *
 
-DEBUG = True
 
-INSTALLED_APPS += ('debug_toolbar', )
-
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'static'),
+)
